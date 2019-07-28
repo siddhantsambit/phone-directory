@@ -49,6 +49,10 @@ class ShowSubscribers extends Component {
     console.log("Compoenent Did Mount");
     console.log(this.state);
   } */
+
+  onDeleteClick = (subscriberId) => {
+    this.props.deleteSubscriberHandler(subscriberId);
+  }
   render() {
     console.log("Render Called")
     /* let subscribers = [
@@ -101,7 +105,7 @@ class ShowSubscribers extends Component {
                 <span className = "grid-item">{sub.name}</span>
                 <span className = "grid-item">{sub.phone}</span>
                 <span className= "grid-item action action-btn-container">
-                  <button className= "custom-btn delete-btn" /* onClick={this.clickHandler.bind(this, "Delete Handler Clicked")} */>Delete</button>
+                  <button className= "custom-btn delete-btn" onClick={this.onDeleteClick.bind(this,sub.id)}/* onClick={this.clickHandler.bind(this, "Delete Handler Clicked")} */>Delete</button>
                 </span>
               </div>
           })
