@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from "./Header";
-import './App.css';
+import './ShowSubscribers.css';
 
 /* class App extends Component {
   
@@ -18,12 +18,12 @@ import './App.css';
     );
   }
 } */
-class App extends Component {
+class ShowSubscribers extends Component {
 /* clickHandler(message){
   alert(message);
 } */
 
-  constructor(){
+  /* constructor(){
     super();
     //constructor is the only palce where you can define this.state
     //anywhere else you have to use set.state
@@ -47,7 +47,7 @@ class App extends Component {
     this.setState({subscribersListToShow: subscribersList});
     console.log("Compoenent Did Mount");
     console.log(this.state);
-  }
+  } */
   render() {
     console.log("Render Called")
     /* let subscribers = [
@@ -82,8 +82,20 @@ class App extends Component {
             <span className="grid-item ">9999999999</span>
           </div> */}
 
-          {
+         { /* {
             this.state.subscribersListToShow.map(sub => {
+              return <div key={sub.id} className="grid-container">
+                <span className = "grid-item">{sub.name}</span>
+                <span className = "grid-item">{sub.phone}</span>
+                <span className= "grid-item action action-btn-container">
+                  <button className= "custom-btn delete-btn" /* onClick={this.clickHandler.bind(this, "Delete Handler Clicked")}>Delete</button>
+                </span>
+              </div>
+          })
+          } */}
+
+          {
+            this.props.subscribersList.map(sub => {
               return <div key={sub.id} className="grid-container">
                 <span className = "grid-item">{sub.name}</span>
                 <span className = "grid-item">{sub.phone}</span>
@@ -99,4 +111,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default ShowSubscribers;
