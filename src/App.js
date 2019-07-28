@@ -19,8 +19,38 @@ import './App.css';
   }
 } */
 class App extends Component {
+/* clickHandler(message){
+  alert(message);
+} */
+
+  constructor(){
+    super();
+    //constructor is the only palce where you can define this.state
+    //anywhere else you have to use set.state
+    this.state = {
+      subscribersListToShow: []
+    }
+    console.log("Constructor Called")                  
+  }
+
+  componentDidMount() {
+    console.log("Component Did Mount Called")
+    let newSubscriber = 
+      {
+        id: 1,
+        name: "Shilpa Bhat",
+        phone: "8888888888"
+      }
+    
+    let subscribersList = this.state.subscribersListToShow;
+    subscribersList.push(newSubscriber);
+    this.setState({subscribersListToShow: subscribersList});
+    console.log("Compoenent Did Mount");
+    console.log(this.state);
+  }
   render() {
-    let subscribers = [
+    console.log("Render Called")
+    /* let subscribers = [
       {
         id:1,
         name: "Shilpa Bhat",
@@ -31,7 +61,7 @@ class App extends Component {
         name: "Srishti",
         phone: "9999999999"
       }
-    ]
+    ] */
     return (
       <div>
         <Header heading="Phone Directory"></Header>
@@ -53,12 +83,12 @@ class App extends Component {
           </div> */}
 
           {
-            subscribers.map(sub => {
+            this.state.subscribersListToShow.map(sub => {
               return <div key={sub.id} className="grid-container">
                 <span className = "grid-item">{sub.name}</span>
                 <span className = "grid-item">{sub.phone}</span>
                 <span className= "grid-item action action-btn-container">
-                  <button className= "custom-btn delete-btn">Delete</button>
+                  <button className= "custom-btn delete-btn" /* onClick={this.clickHandler.bind(this, "Delete Handler Clicked")} */>Delete</button>
                 </span>
               </div>
           })
